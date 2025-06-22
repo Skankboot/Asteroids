@@ -2,6 +2,7 @@ import pygame
 import constants
 import player
 import asteroid, asteroidfield
+import sys
 from constants import * # type: ignore
 
 def main():
@@ -29,6 +30,12 @@ def main():
                 return
        
         updateable.update(dt)
+
+        for rock in asteroids:
+            if rock.collision(my_guy) == True:
+                print ("Game over!")
+                sys.exit()
+
         screen.fill((0,0,0))
 
         for item in drawable:
